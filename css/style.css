@@ -1,0 +1,132 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body{
+    background-color: rgb(109, 109, 216);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.app{
+    height: 50vh;
+    width: 40vw;
+    background-color: rgb(255, 151, 151);
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    box-shadow: 1px 2px 36px 12px green;
+    animation: app 1s linear 0.5s;
+    position: relative;
+}
+@keyframes app{
+    0%{
+        transform: scale(0);
+        
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+button{
+    margin-top: auto;
+    /* margin-left: 0;
+    margin-right: 0; */
+    width: 40vw;
+    padding: 2px 3px;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-weight: 900;
+    
+    font-family:'Courier New', Courier, monospace;
+    animation: btn 1s linear 1s;
+    /* box-shadow: 2px 2px 2px 12px green; */
+}
+@keyframes btn{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+button:hover{
+    box-shadow: 1px 2px 36px 12px rgb(21, 21, 78);
+    letter-spacing: 5px;
+    
+}
+@media (max-width:786px){
+    .app{
+        width: 80vw;
+    }
+    button{
+        width: 80vw;
+    }
+}
+#quotes_icon{
+ margin: 2px 2px;
+ position:absolute;
+ top: 25px;
+ left: 15px;
+ color: dimgrey;
+}
+.tweet{
+    width:40px;
+    height: 40px;
+    background-color: blue;
+    clip-path: polygon(0 0,100% 0,100% 100%);
+    position:absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.tweet i{
+    position:absolute;
+    top: 5px;
+    right: 5px;
+}
+.quote-text{
+    position:absolute;
+    top: 70px;
+    left: 20px;
+    right: 20px;
+    font-size: 1.2rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+}
+.quote-author{
+    position:absolute;
+    top: 170px;
+    right: 30px;
+    font-weight: 600;
+
+    font-size: 1rem;
+}
+
+footer{
+    background-color: black;
+    text-align: center;
+    padding: 13px 0px;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    width: 100vw;
+}
+#tweet i:hover{
+    animation: tweet_anime 2s linear infinite;
+}
+@keyframes tweet_anime{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

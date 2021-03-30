@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app">
+        <i id="quotes_icon" class="fa fa-quote-left fa-2x" aria-hidden="true"></i>
+        <div class="tweet" id="tweet">
+            <i class="fa fa-twitter" style="color:rgb(232, 232, 255);" aria-hidden="true"></i>
+        </div>
+        <p class="quote-text" id="text"></p>
+        <p class="quote-author" id="author"></p>
+        <button id="btn">Next Quote</button>
+        
+    </div>
+    <footer>
+            2021&copy; Created By <a class="twitter-follow-button"
+            href="https://twitter.com/TagraSahab">
+            Sahil Tagra</a>
+    </footer>
+    <script>
+        const quote_text = document.getElementById("text");
+        const quote_author = document.getElementById("author");
+        const next_quote = document.getElementById("btn");
+        const tweet_quote = document.getElementById("tweet");
+        
+        let realdata = "";
+        let ranNum = "";
+        const getQuotes = async () =>{
+            const api = "https://type.fit/api/quotes";
+            try{
+                let data = await fetch(api);
+                realdata = await data.json();
+                randomQuote();
+            }
+            catch (error){
+                console.log("Error :"+error);
+                quote_text.innerText =  "Something Went Wrong..."
+            }
+        }
+        const randomQuote = () =>{
+            ranNum = Math.floor(Math.random() * realdata.length);
+            quote_text.innerText = realdata[ranNum].text;
+            let author = realdata[ranNum].author;
+            author == null 
+            ? (quote_author.innerText = "Unknown")
+            : quote_author.innerText = author;
+            // console.log(realdata[ranNum].text);
+            // console.log(realdata[ranNum].author);
+        }
+        const tweet = () =>{
+            let post = `https://twitter.com/intent/tweet?text="${realdata[ranNum].text}"
+            Quote Generated Using Random Quotes(https://sahil3554.github.io/react-todo/) `;
+            window.open(post);
+        }
+        getQuotes();
+        next_quote.addEventListener('click',randomQuote);
+        tweet_quote.addEventListener('click',tweet);
+    </script>
+</body>
+</html>
